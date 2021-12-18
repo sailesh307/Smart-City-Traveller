@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Smart City Traveller</string>
+
+
+    <!--  city choices  -->
+    <string-array name="cities">
+        <item>Lucknow</item>
+        <item>Mumbai</item>
+        <item>Chennai</item>
+        <item>agra</item>
+        <item>noida</item>
+        <item>delhi</item>
+        <item>dehradun</item>
+        <item>Hyderabad</item>
+        <item>Srinagar</item>
+    </string-array>
+
+    <!--  credential  -->
+    <!--  ILJ5ALT0WXVJHS3UJ05G4R5RYSIHCTKE5MWBPDMZUZ0CMZFU  -->
+    <!--  0Q1PIGZ2MZ1MQSLAQUL4HSISMK1KJLOMXGXBR4R35UGTZJXD  -->
+    <string name="CLIENT_ID">SMYQFDGMPUWNPLBNTYGWA5CX53HOFZ14MUG05LYUWTOIHHDL</string>
+    <string name="CLIENT_SECRET">5APHXKQIR03IU0YA0GEOP5OZHFRD45QDUW3Q03XMCZTJUKWL</string>
+    <string name="title_activity_location">Map</string>
+
+
+</resources>
