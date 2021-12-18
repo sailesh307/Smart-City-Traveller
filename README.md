@@ -8,6 +8,8 @@ It is an android app developed using Java and XML and Foursquare API.
 - `Java` is used is handle the backend of the app and 
 - `Foursquare API` is used to provide location based experiences with diverse information about venues(Like venue name, address, latitude, longitude).
 
+[Video Link](https://youtu.be/a3OAVr1kiqc)
+
 ## Layout
 
 ![layout](./img/layout.png)
