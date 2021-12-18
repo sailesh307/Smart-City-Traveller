@@ -20,9 +20,7 @@ It is an android app developed using Java and XML and Foursquare API.
 
 ### Input City Name
 
-<img src="./img/inputCity1.jpg" alt="inputCityName" width="30%" >
-<img src="./img/inputCity2.jpg" alt="inputCityName" width="30%" >
-<img src="./img/inputCity3.jpg" alt="inputCityName" width="30%" >
+<img src="./img/inputCity1.jpg" alt="inputCityName" width="30%" > <img src="./img/inputCity2.jpg" alt="inputCityName" width="30%" > <img src="./img/inputCity3.jpg" alt="inputCityName" width="30%" >
 
 ### Choose Category
 
