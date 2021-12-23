@@ -1,6 +1,8 @@
 package com.example.smartcitytraveller;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,7 +36,7 @@ public class DisplayVenues extends AppCompatActivity {
     private RecyclerView venues;
     private ImageView mapIcon;
     private String city, venueType;
-    private int position;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,6 @@ public class DisplayVenues extends AppCompatActivity {
         if(bundle!=null){
             venueType = (String) bundle.get("VENUE_TYPE");
             city = (String) bundle.get("CITY_NAME");
-            position = bundle.getInt("POSITION");
             tvVenueType.setText(city.toUpperCase() + " " + venueType.toUpperCase());
         }
         setVenues();
@@ -128,9 +129,19 @@ public class DisplayVenues extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         // TODO: Handle error
                         /* stop Progress Bar */
-//                        progressDialog.hide();
-//                        longitude = 0.0;
-                        Toast.makeText(DisplayVenues.this, "error.getMessage()", Toast.LENGTH_SHORT).show();
+                        progressDialog.hide();
+                        ////////// Show Alert Dialog //////////
+                        AlertDialog alertDialog = new AlertDialog.Builder(DisplayVenues.this)
+                                .setTitle("Alert")
+                                .setTitle("Unexpected error occurred !!!")
+                                .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        ///////// close this activity //////////
+                                        finish();
+                                    }
+                                })
+                                .show();
                     }
                 });
 

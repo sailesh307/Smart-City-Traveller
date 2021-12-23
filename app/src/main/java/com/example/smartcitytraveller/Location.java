@@ -33,11 +33,6 @@ public class Location extends FragmentActivity implements OnMapReadyCallback {
         Intent intent = getIntent();
         venueArrayList = (ArrayList<Venue>) intent.getSerializableExtra("VENUE_LIST");
 
-        Toast.makeText(this, "hi", Toast.LENGTH_SHORT).show();
-        ///
-
-
-
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);

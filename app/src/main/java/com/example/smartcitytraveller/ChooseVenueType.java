@@ -26,9 +26,8 @@ public class ChooseVenueType extends AppCompatActivity {
         String cityName = (String) bundle.get("CITY_NAME");
         Toast.makeText(this, cityName, Toast.LENGTH_SHORT).show();
 
-
         //////////////  after extracting CITY_NAME /////////////////
-
+        // show different types of venues eg. Market, hospital, Zoo
         RecyclerView rvVenueCategory = findViewById(R.id.rvVenueCategory);
 
         AdapterForVenueCategory adapter = new AdapterForVenueCategory(getCategoryData());
@@ -36,7 +35,7 @@ public class ChooseVenueType extends AppCompatActivity {
         rvVenueCategory.setLayoutManager(new LinearLayoutManager(this));
         rvVenueCategory.setAdapter(adapter);
 
-        //////////////// on Clicking Type of Venue ////////////////////
+        //////////////// on Clicking Type of Venue (eg. Market)////////////////////
         adapter.setOnItemClickListener(new AdapterForVenueCategory.ClickListener() {
             @Override
             public void onItemClick(int position, View view) {
@@ -44,7 +43,6 @@ public class ChooseVenueType extends AppCompatActivity {
                 Toast.makeText(ChooseVenueType.this, text, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(ChooseVenueType.this, DisplayVenues.class);
-                intent.putExtra("POSITION", position);
                 intent.putExtra("VENUE_TYPE", text);
                 intent.putExtra("CITY_NAME", cityName);
                 startActivity(intent);
