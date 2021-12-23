@@ -1,4 +1,7 @@
-# Smart-City-Traveller
+<h1 align="center"> Smart-City-Traveller </h1>
+<p align="center">
+<img src="./img/icon.png" alt="smart-city-traveller" width="20%" align = "center">
+</p>
 
 It is an Application that helps a traveler visiting a city to explore and navigate places of their choice in a very Simple way without typing and deciding which place is best and which is not.
 
@@ -40,7 +43,12 @@ It is an android app developed using Java and XML and Foursquare API.
 
 # Requirements
 
+### 1. Changing Foursquare Api
 - Login with foursquare account and get the credentials.
-- Now go : 
-`app\src\main\res\values\strings.xml`
+- Now go to : `app\src\main\res\values\strings.xml`
 - and replace `CLIENT_ID` and `CLIENT_SECRET` with your own foursquare credentials.
+
+### 2. Change the Google Maps Api
+- Get [Google Map api](https://developers.google.com/maps/documentation/android/signup)
+- Now go to : `app\src\release\res\values\google_maps_api.xml`
+- and replace the "google_maps_key" with your own google map api key.
