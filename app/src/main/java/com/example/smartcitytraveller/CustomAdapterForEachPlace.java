@@ -17,18 +17,23 @@ public class CustomAdapterForEachPlace extends RecyclerView.Adapter<CustomAdapte
      * (custom ViewHolder).
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView textView;
+        private final TextView textViewName, textViewAddress;
 
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
 
-            textView = (TextView) view.findViewById(R.id.VenueTypeName);
+            textViewName = (TextView) view.findViewById(R.id.VenueTypeName);
+            textViewAddress = (TextView) view.findViewById(R.id.address);
         }
 
-        public TextView getTextView() {
-            return textView;
+        public TextView getTextViewName() {
+            return textViewName;
         }
+        public TextView getTextViewAddress(){
+            return textViewAddress;
+        }
+
     }
 
     /**
@@ -57,7 +62,8 @@ public class CustomAdapterForEachPlace extends RecyclerView.Adapter<CustomAdapte
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.getTextView().setText(venueList.get(position).getName());
+        viewHolder.getTextViewName().setText(venueList.get(position).getName());
+        viewHolder.getTextViewAddress().setText(venueList.get(position).getAddress());
     }
 
     // Return the size of your dataset (invoked by the layout manager)

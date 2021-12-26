@@ -12,12 +12,9 @@ public class Venue implements Serializable {
     private transient JSONObject place;
 
     private String name;
-    private String phone;
     private String address;
-    private String icon;
     private double latitude;
     private double longitude;
-    private int distance;
 
     /**
      * Constructor that take JSONObject place and get data from it
@@ -26,12 +23,9 @@ public class Venue implements Serializable {
     Venue(JSONObject place){
         this.place = place;
         setName();
-        setPhone();
         setAddress();
         setLatitude();
         setLongitude();
-        setDistance();
-        setIcon();
     }
 
     /**
@@ -46,18 +40,9 @@ public class Venue implements Serializable {
         }
     }
 
-    private void setPhone(){
-        try {
-            phone = place.getJSONObject("contact").getString("phone");
-        } catch (JSONException e) {
-            phone = " ";
-            e.printStackTrace();
-        }
-    }
-
     private void setLatitude(){
         try {
-            latitude = place.getJSONObject("location").getDouble("lat");
+            latitude = place.getJSONObject("geocodes").getJSONObject("main").getDouble("latitude");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -65,27 +50,8 @@ public class Venue implements Serializable {
 
     private void setLongitude(){
         try {
-            longitude = place.getJSONObject("location").getDouble("lng");
+            longitude = place.getJSONObject("geocodes").getJSONObject("main").getDouble("longitude");
         } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void setDistance(){
-        try {
-            distance = place.getJSONObject("location").getInt("distance");
-        } catch (JSONException e) {
-            distance = 0;
-            e.printStackTrace();
-        }
-    }
-
-    private void setIcon(){
-        try {
-            icon = place.getJSONArray("categories").getJSONObject(0).getJSONObject("icon").getString("prefix") + 64 + ".png";
-            Log.d("iconTest", icon);
-        } catch (JSONException e) {
-            icon = "";
             e.printStackTrace();
         }
     }
@@ -99,24 +65,19 @@ public class Venue implements Serializable {
             try {
                 address += location.getString("address") + " ";
             } catch (Exception e){ e.printStackTrace(); }
-            ///////////////// Street //////////////////
-            try{
-                address += location.getString("crossStreet") + " ";
-            } catch (Exception e){ e.printStackTrace(); }
             ///////////////// city ////////////////////
             try{
-                address += location.getString("city") + " ";
+                address += location.getString("locality") + " ";
             } catch (Exception e) { e.printStackTrace(); }
             ///////////////// postal Code ///////////////////
             try{
-                address += location.getString("postalCode");
+                address += location.getString("postcode");
             } catch (Exception e) { e.printStackTrace(); }
         } catch (Exception e){
             e.printStackTrace();
         }
         this.address = address; // finally setting address
     }
-
 
     /**
      * getter functions
@@ -125,16 +86,8 @@ public class Venue implements Serializable {
         return name;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
     public String getAddress() {
         return address;
-    }
-
-    public String getIcon() {
-        return icon;
     }
 
     public double getLatitude() {
@@ -145,7 +98,4 @@ public class Venue implements Serializable {
         return longitude;
     }
 
-    public int getDistance() {
-        return distance;
-    }
 }

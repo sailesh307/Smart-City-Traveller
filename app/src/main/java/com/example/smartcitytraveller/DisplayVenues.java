@@ -9,12 +9,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,9 +24,9 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DisplayVenues extends AppCompatActivity {
 
@@ -57,7 +57,6 @@ public class DisplayVenues extends AppCompatActivity {
         }
         setVenues();
 
-
         /////////// on click listener for map icon /////////
         mapIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,25 +68,17 @@ public class DisplayVenues extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     /**
      * @return String (url of venue selected by user)
      */
     String getUrl(){
-        String CLIENT_ID = getResources().getString(R.string.CLIENT_ID);
-        String CLIENT_SECRET = getResources().getString(R.string.CLIENT_SECRET);
-        String domain = "https://api.foursquare.com/v2/venues/search?near=";
-        String date = new SimpleDateFormat("yyyyMMdd").format(new Date()); // for getting present date
 
+        String domain = "https://api.foursquare.com/v3/places/search?&near=";
         String url = domain + city
-                + "&client_id=" + CLIENT_ID
-                + "&client_secret=" + CLIENT_SECRET
-                + "&v=" + date
-                + "&limit=10"
-                + "&query=" + venueType;
-
+                + "&query=" + venueType
+                + "&limit=10";
         Log.d("url", url);
 
         return url;
@@ -102,6 +93,7 @@ public class DisplayVenues extends AppCompatActivity {
         //////////////// Progress Bar started/////////////////
 
         String url = getUrl();
+
         RequestQueue queue = Volley.newRequestQueue(this);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
@@ -110,13 +102,11 @@ public class DisplayVenues extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         /* stop Progress Bar */
+                        Log.d("myurl", response.toString());
                         progressDialog.hide();
-                        Toast.makeText(DisplayVenues.this, "this is message", Toast.LENGTH_SHORT).show();
 
                         ParseData parseData = new ParseData(response);
                         venueArrayList = parseData.getVenueList();
-                        //just testing
-//                        longitude = venueArrayList.get(0).getLongitude();
 
                         CustomAdapterForEachPlace adapter = new CustomAdapterForEachPlace(venueArrayList);
                         venues.setLayoutManager(new LinearLayoutManager(DisplayVenues.this));
@@ -143,7 +133,14 @@ public class DisplayVenues extends AppCompatActivity {
                                 })
                                 .show();
                     }
-                });
+                }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Authorization", getResources().getString(R.string.AUTH_ID));
+                return params;
+            }
+        };
 
         // Add the request to the RequestQueue.
         queue.add(jsonObjectRequest);

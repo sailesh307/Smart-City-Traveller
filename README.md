@@ -3,15 +3,14 @@
 <img src="./img/icon.png" alt="smart-city-traveller" width="20%" align = "center">
 </p>
 
-It is an Application that helps a traveler visiting a city to explore and navigate places of their choice in a very Simple way without typing and deciding which place is best and which is not.
 
+[<img alt="watch video" width="120px" src="./img/watchVideo.png" />](https://youtu.be/a3OAVr1kiqc)
 
-It is an android app developed using Java and XML and Foursquare API.
-- `XML` is used to make layout of the project and 
-- `Java` is used is handle the backend of the app and 
-- `Foursquare API` is used to provide location based experiences with diverse information about venues(Like venue name, address, latitude, longitude).
+- It is an Application that helps a traveler visiting a city to explore and navigate places of their choice in a very Simple way without typing and deciding which place is best and which is not.
 
-[Video Link](https://youtu.be/a3OAVr1kiqc)
+- It is developed using `XML`, `Java` and `Foursquare API`.
+
+<img src="./img/used.png" alt="smart-city-traveller" width="400" align = "center">
 
 ## Layout
 
@@ -39,16 +38,29 @@ It is an android app developed using Java and XML and Foursquare API.
 
 <img src="./img/googleMap.jpg" alt="googleMap" width="30%" >
 
+### How to view path on Google Map from your current location to the venue
+- click on the red marker wher you want to go and then 
+- click on bottom right corner icons to view the route from the current location to the venue
 
+for demo view video 
+
+[<img alt="watch video" width="120px" src="./img/watchVideo.png" />](https://youtu.be/a3OAVr1kiqc)
 
 # Requirements
 
+- Android Studio
+- minimum 4GB RAM
+- minimum 2GB Storage
+- FourSquare API (version 3 `v3`)
+- Google Maps API
+- Working Internet Connection
+
 ### 1. Changing Foursquare Api
-- Login with foursquare account and get the credentials.
-- Now go to : `app\src\main\res\values\strings.xml`
-- and replace `CLIENT_ID` and `CLIENT_SECRET` with your own foursquare credentials.
+- Login with foursquare account and get Authroization code
+- Now go to : [app\src\main\res\values\strings.xml](app\src\main\res\values\strings.xml)
+- and replace `AUTH_ID` with your own foursquare authroization code.
 
 ### 2. Change the Google Maps Api
 - Get [Google Map api](https://developers.google.com/maps/documentation/android/signup)
-- Now go to : `app\src\release\res\values\google_maps_api.xml`
+- Now go to : [app\src\release\res\values\google_maps_api.xml](app\src\release\res\values\google_maps_api.xml)
 - and replace the "google_maps_key" with your own google map api key.

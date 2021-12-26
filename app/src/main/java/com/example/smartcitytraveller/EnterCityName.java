@@ -41,7 +41,6 @@ public class EnterCityName extends AppCompatActivity {
                     intent.putExtra("CITY_NAME", cityName);
                     startActivity(intent);
                 }
-
             }
         });
     }

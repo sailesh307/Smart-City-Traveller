@@ -21,7 +21,7 @@ public class ParseData {
 
     ParseData(JSONObject data){
         try{
-            JSONArray venueArray = data.getJSONObject("response").getJSONArray("venues");
+            JSONArray venueArray = data.getJSONArray("results");
 
             for(int i = 0; i < venueArray.length(); i++){
                 JSONObject eachVenue = venueArray.getJSONObject(i);
